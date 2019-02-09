@@ -1,0 +1,36 @@
+02/09/2019 08:12:40.712 - mt-slave-1:5000 - [MainThread] Setting up server with prefix http://mt-master.tasks:5000/
+ * Serving Flask app "Slave" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+02/09/2019 08:12:40.723 - mt-slave-1:5000 - [http]  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+02/09/2019 08:12:41.714 - mt-slave-1:5000 - [MainThread] Connecting to server at http://mt-master.tasks:5000/connect/mt-slave-1:5000
+02/09/2019 08:12:41.834 - mt-slave-1:5000 - [Thread-1] Received task task-0, will sleep for 6 seconds
+02/09/2019 08:12:41.835 - mt-slave-1:5000 - [Thread-1] 172.18.0.4 - - [09/Feb/2019 20:12:41] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:12:41.835 - mt-slave-1:5000 - [taskrunner] Sleeping for 6 seconds
+02/09/2019 08:12:43.423 - mt-slave-1:5000 - [Thread-2] 172.18.0.4 - - [09/Feb/2019 20:12:43] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:45.443 - mt-slave-1:5000 - [Thread-3] 172.18.0.4 - - [09/Feb/2019 20:12:45] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:47.459 - mt-slave-1:5000 - [Thread-4] 172.18.0.4 - - [09/Feb/2019 20:12:47] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:47.840 - mt-slave-1:5000 - [taskrunner] Sleeping done for task-0, notifying server
+02/09/2019 08:12:47.852 - mt-slave-1:5000 - [Thread-5] Received task task-5, will sleep for 2 seconds
+02/09/2019 08:12:47.853 - mt-slave-1:5000 - [Thread-5] 172.18.0.4 - - [09/Feb/2019 20:12:47] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:12:47.853 - mt-slave-1:5000 - [taskrunner] Sleeping for 2 seconds
+02/09/2019 08:12:49.475 - mt-slave-1:5000 - [Thread-6] 172.18.0.4 - - [09/Feb/2019 20:12:49] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:49.856 - mt-slave-1:5000 - [taskrunner] Sleeping done for task-5, notifying server
+02/09/2019 08:12:49.864 - mt-slave-1:5000 - [Thread-7] Received task task-6, will sleep for 10 seconds
+02/09/2019 08:12:49.865 - mt-slave-1:5000 - [Thread-7] 172.18.0.4 - - [09/Feb/2019 20:12:49] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:12:49.865 - mt-slave-1:5000 - [taskrunner] Sleeping for 10 seconds
+02/09/2019 08:12:51.492 - mt-slave-1:5000 - [Thread-8] 172.18.0.4 - - [09/Feb/2019 20:12:51] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:53.504 - mt-slave-1:5000 - [Thread-9] 172.18.0.4 - - [09/Feb/2019 20:12:53] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:55.517 - mt-slave-1:5000 - [Thread-10] 172.18.0.4 - - [09/Feb/2019 20:12:55] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:57.532 - mt-slave-1:5000 - [Thread-11] 172.18.0.4 - - [09/Feb/2019 20:12:57] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:59.544 - mt-slave-1:5000 - [Thread-12] 172.18.0.4 - - [09/Feb/2019 20:12:59] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:59.875 - mt-slave-1:5000 - [taskrunner] Sleeping done for task-6, notifying server
+02/09/2019 08:12:59.885 - mt-slave-1:5000 - [Thread-13] Received task task-10, will sleep for 10 seconds
+02/09/2019 08:12:59.886 - mt-slave-1:5000 - [Thread-13] 172.18.0.4 - - [09/Feb/2019 20:12:59] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:12:59.887 - mt-slave-1:5000 - [taskrunner] Sleeping for 10 seconds
+02/09/2019 08:13:01.558 - mt-slave-1:5000 - [Thread-14] 172.18.0.4 - - [09/Feb/2019 20:13:01] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:03.573 - mt-slave-1:5000 - [Thread-15] 172.18.0.4 - - [09/Feb/2019 20:13:03] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:05.587 - mt-slave-1:5000 - [Thread-16] 172.18.0.4 - - [09/Feb/2019 20:13:05] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:07.603 - mt-slave-1:5000 - [Thread-17] 172.18.0.4 - - [09/Feb/2019 20:13:07] "GET /status HTTP/1.1" 200 -

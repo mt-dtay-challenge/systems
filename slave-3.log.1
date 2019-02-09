@@ -1,0 +1,89 @@
+02/09/2019 08:12:41.440 - mt-slave-3:5000 - [MainThread] Setting up server with prefix http://mt-master.tasks:5000/
+ * Serving Flask app "Slave" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+02/09/2019 08:12:41.485 - mt-slave-3:5000 - [http]  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+02/09/2019 08:12:42.442 - mt-slave-3:5000 - [MainThread] Connecting to server at http://mt-master.tasks:5000/connect/mt-slave-3:5000
+02/09/2019 08:12:42.451 - mt-slave-3:5000 - [Thread-1] Received task task-1, will sleep for 3 seconds
+02/09/2019 08:12:42.451 - mt-slave-3:5000 - [Thread-1] 172.18.0.4 - - [09/Feb/2019 20:12:42] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:12:42.451 - mt-slave-3:5000 - [taskrunner] Sleeping for 3 seconds
+02/09/2019 08:12:43.428 - mt-slave-3:5000 - [Thread-2] 172.18.0.4 - - [09/Feb/2019 20:12:43] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:45.446 - mt-slave-3:5000 - [Thread-3] 172.18.0.4 - - [09/Feb/2019 20:12:45] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:45.452 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-1, notifying server
+02/09/2019 08:12:45.458 - mt-slave-3:5000 - [Thread-4] Received task task-3, will sleep for 1 seconds
+02/09/2019 08:12:45.458 - mt-slave-3:5000 - [Thread-4] 172.18.0.4 - - [09/Feb/2019 20:12:45] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:12:45.458 - mt-slave-3:5000 - [taskrunner] Sleeping for 1 seconds
+02/09/2019 08:12:46.459 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-3, notifying server
+02/09/2019 08:12:46.466 - mt-slave-3:5000 - [Thread-5] Received task task-4, will sleep for 7 seconds
+02/09/2019 08:12:46.466 - mt-slave-3:5000 - [Thread-5] 172.18.0.4 - - [09/Feb/2019 20:12:46] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:12:46.466 - mt-slave-3:5000 - [taskrunner] Sleeping for 7 seconds
+02/09/2019 08:12:47.463 - mt-slave-3:5000 - [Thread-6] 172.18.0.4 - - [09/Feb/2019 20:12:47] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:49.480 - mt-slave-3:5000 - [Thread-7] 172.18.0.4 - - [09/Feb/2019 20:12:49] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:51.495 - mt-slave-3:5000 - [Thread-8] 172.18.0.4 - - [09/Feb/2019 20:12:51] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:53.472 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-4, notifying server
+02/09/2019 08:12:53.484 - mt-slave-3:5000 - [Thread-9] Received task task-8, will sleep for 9 seconds
+02/09/2019 08:12:53.484 - mt-slave-3:5000 - [Thread-9] 172.18.0.4 - - [09/Feb/2019 20:12:53] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:12:53.484 - mt-slave-3:5000 - [taskrunner] Sleeping for 9 seconds
+02/09/2019 08:12:53.508 - mt-slave-3:5000 - [Thread-10] 172.18.0.4 - - [09/Feb/2019 20:12:53] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:55.521 - mt-slave-3:5000 - [Thread-11] 172.18.0.4 - - [09/Feb/2019 20:12:55] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:57.535 - mt-slave-3:5000 - [Thread-12] 172.18.0.4 - - [09/Feb/2019 20:12:57] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:12:59.547 - mt-slave-3:5000 - [Thread-13] 172.18.0.4 - - [09/Feb/2019 20:12:59] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:01.562 - mt-slave-3:5000 - [Thread-14] 172.18.0.4 - - [09/Feb/2019 20:13:01] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:02.492 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-8, notifying server
+02/09/2019 08:13:02.497 - mt-slave-3:5000 - [Thread-15] Received task task-11, will sleep for 10 seconds
+02/09/2019 08:13:02.498 - mt-slave-3:5000 - [Thread-15] 172.18.0.4 - - [09/Feb/2019 20:13:02] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:13:02.498 - mt-slave-3:5000 - [taskrunner] Sleeping for 10 seconds
+02/09/2019 08:13:03.577 - mt-slave-3:5000 - [Thread-16] 172.18.0.4 - - [09/Feb/2019 20:13:03] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:05.590 - mt-slave-3:5000 - [Thread-17] 172.18.0.4 - - [09/Feb/2019 20:13:05] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:07.606 - mt-slave-3:5000 - [Thread-18] 172.18.0.4 - - [09/Feb/2019 20:13:07] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:09.619 - mt-slave-3:5000 - [Thread-19] 172.18.0.4 - - [09/Feb/2019 20:13:09] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:11.629 - mt-slave-3:5000 - [Thread-20] 172.18.0.4 - - [09/Feb/2019 20:13:11] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:12.504 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-11, notifying server
+02/09/2019 08:13:12.509 - mt-slave-3:5000 - [Thread-21] Received task task-13, will sleep for 5 seconds
+02/09/2019 08:13:12.509 - mt-slave-3:5000 - [Thread-21] 172.18.0.4 - - [09/Feb/2019 20:13:12] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:13:12.509 - mt-slave-3:5000 - [taskrunner] Sleeping for 5 seconds
+02/09/2019 08:13:13.643 - mt-slave-3:5000 - [Thread-22] 172.18.0.4 - - [09/Feb/2019 20:13:13] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:15.658 - mt-slave-3:5000 - [Thread-23] 172.18.0.4 - - [09/Feb/2019 20:13:15] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:17.514 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-13, notifying server
+02/09/2019 08:13:17.521 - mt-slave-3:5000 - [Thread-24] Received task task-16, will sleep for 9 seconds
+02/09/2019 08:13:17.521 - mt-slave-3:5000 - [Thread-24] 172.18.0.4 - - [09/Feb/2019 20:13:17] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:13:17.521 - mt-slave-3:5000 - [taskrunner] Sleeping for 9 seconds
+02/09/2019 08:13:17.669 - mt-slave-3:5000 - [Thread-25] 172.18.0.4 - - [09/Feb/2019 20:13:17] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:19.683 - mt-slave-3:5000 - [Thread-26] 172.18.0.4 - - [09/Feb/2019 20:13:19] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:21.696 - mt-slave-3:5000 - [Thread-27] 172.18.0.4 - - [09/Feb/2019 20:13:21] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:23.707 - mt-slave-3:5000 - [Thread-28] 172.18.0.4 - - [09/Feb/2019 20:13:23] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:25.722 - mt-slave-3:5000 - [Thread-29] 172.18.0.4 - - [09/Feb/2019 20:13:25] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:26.528 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-16, notifying server
+02/09/2019 08:13:26.533 - mt-slave-3:5000 - [Thread-30] Received task task-19, will sleep for 1 seconds
+02/09/2019 08:13:26.533 - mt-slave-3:5000 - [Thread-30] 172.18.0.4 - - [09/Feb/2019 20:13:26] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:13:26.534 - mt-slave-3:5000 - [taskrunner] Sleeping for 1 seconds
+02/09/2019 08:13:27.535 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-19, notifying server
+02/09/2019 08:13:27.545 - mt-slave-3:5000 - [Thread-31] Received task task-20, will sleep for 5 seconds
+02/09/2019 08:13:27.545 - mt-slave-3:5000 - [Thread-31] 172.18.0.4 - - [09/Feb/2019 20:13:27] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:13:27.545 - mt-slave-3:5000 - [taskrunner] Sleeping for 5 seconds
+02/09/2019 08:13:27.731 - mt-slave-3:5000 - [Thread-32] 172.18.0.4 - - [09/Feb/2019 20:13:27] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:29.739 - mt-slave-3:5000 - [Thread-33] 172.18.0.4 - - [09/Feb/2019 20:13:29] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:31.748 - mt-slave-3:5000 - [Thread-34] 172.18.0.4 - - [09/Feb/2019 20:13:31] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:32.550 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-20, notifying server
+02/09/2019 08:13:32.558 - mt-slave-3:5000 - [Thread-35] Received task task-21, will sleep for 5 seconds
+02/09/2019 08:13:32.558 - mt-slave-3:5000 - [Thread-35] 172.18.0.4 - - [09/Feb/2019 20:13:32] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:13:32.559 - mt-slave-3:5000 - [taskrunner] Sleeping for 5 seconds
+02/09/2019 08:13:33.760 - mt-slave-3:5000 - [Thread-36] 172.18.0.4 - - [09/Feb/2019 20:13:33] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:35.776 - mt-slave-3:5000 - [Thread-37] 172.18.0.4 - - [09/Feb/2019 20:13:35] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:37.564 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-21, notifying server
+02/09/2019 08:13:37.575 - mt-slave-3:5000 - [Thread-38] Received task task-23, will sleep for 6 seconds
+02/09/2019 08:13:37.575 - mt-slave-3:5000 - [Thread-38] 172.18.0.4 - - [09/Feb/2019 20:13:37] "POST /run_task HTTP/1.1" 200 -
+02/09/2019 08:13:37.575 - mt-slave-3:5000 - [taskrunner] Sleeping for 6 seconds
+02/09/2019 08:13:37.785 - mt-slave-3:5000 - [Thread-39] 172.18.0.4 - - [09/Feb/2019 20:13:37] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:39.799 - mt-slave-3:5000 - [Thread-40] 172.18.0.4 - - [09/Feb/2019 20:13:39] "GET /status HTTP/1.1" 200 -
+02/09/2019 08:13:43.582 - mt-slave-3:5000 - [taskrunner] Sleeping done for task-23, notifying server
+02/09/2019 08:13:43.690 - mt-slave-3:5000 - [taskrunner] Failed to send task completion to master, will retry
+02/09/2019 08:13:44.764 - mt-slave-3:5000 - [taskrunner] Failed to send task completion to master, will retry
+02/09/2019 08:13:45.829 - mt-slave-3:5000 - [taskrunner] Failed to send task completion to master, will retry
+02/09/2019 08:13:46.894 - mt-slave-3:5000 - [taskrunner] Failed to send task completion to master, will retry
+02/09/2019 08:13:47.951 - mt-slave-3:5000 - [taskrunner] Failed to send task completion to master, will retry
+02/09/2019 08:13:49.014 - mt-slave-3:5000 - [taskrunner] Failed to send task completion to master, will retry
+02/09/2019 08:13:50.091 - mt-slave-3:5000 - [taskrunner] Failed to send task completion to master, will retry
+02/09/2019 08:13:51.156 - mt-slave-3:5000 - [taskrunner] Failed to send task completion to master, will retry
