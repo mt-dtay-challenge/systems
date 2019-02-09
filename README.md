@@ -24,6 +24,19 @@ Slaves are launched with the master URI
 
 Master and slaves communicate with each other via HTTP.
 
+#### Master API
+```
+POST /connect/<path:remote_addr>  # New slave connecting to the master
+POST /complete/<path:remote_addr>/<path:taskname>  # Slave notifying the master that its task has completed
+```
+
+### Slave API
+
+```
+GET /status   # Always returns 200 (assuming you can reach it!)
+POST /run_task   [body=task_json]   # Tells a slave to run the provided task
+```
+
 ### Kill Detection
 Master runs a regular health check of all known slaves - both those that have explicitly connected since restart, and those that are marked as currently running a task in the db.
 
@@ -32,27 +45,50 @@ If a slave cannot be reached, it is assumed to have been killed, and any current
 In the case of connectivity issues between containers, this might not be ideal behavior, depending on the cost and idempotency of the tasks being run.
 
 ### Fault Tolerance Cases
+
+In all common cases, tasks will run to completion exactly once.  Slaves will retry forever to send their results to master, and the master detects slave failures and reschedules their tasks.
+
+There are some fault cases where a task could be executed twice.  This is unavoidable unless the task has observable side-effects (in which case the side-effects should be used to determine task state if it is important).  Otherwise, if we assume the tasks are idempotent-but-expensive, these faults should be rare enough that it doesn't matter.
+
+There are no cases where a task will never be executed.  Regardless of what component dies when, all tasks will eventually be executed to completion.
+
 #### Master dies
 Slaves will retry sending their task completion messages forever.
 
 On master restart, it will reload task states from the DB.
 
-#### Slave dies
-Master will notice via healthcheck that it has gone, mark its tasks as killed, and reschedule them later
+Since slaves are still alive, master will not reschedule their running tasks.  With the master returned, slaves will finally be able to notify their successful completion of the tasks.
 
-If the slave dies and restarts in-between healthchecks, master will receive a 'connect' message from it and assume it died (again marking its tasks as killed and rescheduling).
+#### Slave dies
+If a healthcheck occurs while the slave is dead, master will mark its tasks as killed, and reschedule them later
+
+If the slave dies and quickly restarts in-between healthchecks, master will receive a 'connect' message from it and assume it died (again marking its tasks as killed and rescheduling).
 
 #### Master dies, slave completes task but dies before master restarts
 Master will reload with task in 'running' status.
+
 If slave reconnects before healthcheck, master will assume slave died and reschedule task.
+
 If slave remains dead, master will healthcheck, which will fail, and reschedule task.
 
+This results in the same task being run multiple times.
 
 #### Master distributes final task, slave dies before completion
-Task gets marked as killed, gets returned to the queue and rescheduled by master
+Task gets marked as killed, gets returned to the queue and rescheduled by master.
+
+Master continues to wait for new tasks to run, even when empty, up until everything has been marked as successful.
 
 #### Master sends task, but dies before recording it to db
-On restart, master will reschedule the task
+On restart, master will reschedule the task, resulting in the task running twice.
+
+This could be mitigated, but is a very rare event, so likely isn't worth designing around.
+
+#### Slave and master die simultaneously, slave comes back, master comes back
+Slave comes back up, its previous task is lost, starts trying to connect to master (but fails, as it is still down).
+
+Master comes back up, sees the slave's previous task state in the db as "running", adds the slave to its healthcheck list (which it will pass, as it is up now)
+
+Slave will finally reconnect to master.  Master will notice it is already in the slave list, and mark its 'running' task as 'killed' and re-add the slave to the idle queue.
 
 
 ## Log Analysis
@@ -123,10 +159,7 @@ Slave 1 was in the process of task 10, which is marked as killed upon detection.
 Next time master restarts, we see it is still in state killed.  It is then rescheduled and completed fully.
 ```
 02/09/2019 08:14:03.661 - master.py - [MainThread] Loading task {'_id': ObjectId('5c5f342f66799100081b2464'), 'taskname': 'task-10', 'state': 'killed', 'sleeptime': 10, 'host': 'mt-slave-1:5000'} in state killed
-
-# It is rescheduled, and completes fully later
 02/09/2019 08:14:04.664 - master.py - [taskrunner] Sending task {'_id': ObjectId('5c5f342f66799100081b2464'), 'taskname': 'task-10', 'state': 'killed', 'sleeptime': 10, 'host': 'mt-slave-1:5000'} to slave {'remote_addr': 'mt-slave-2:5000', 'api': <__main__.ClientApi object at 0x7f573d02a320>}
-
 02/09/2019 08:14:04.667 - mt-slave-2:5000 - [Thread-41] Received task task-10, will sleep for 10 seconds
 02/09/2019 08:14:14.679 - mt-slave-2:5000 - [taskrunner] Sleeping done for task-10, notifying server
 02/09/2019 08:14:14.684 - master.py - [Thread-2] Marking task-10 as success
